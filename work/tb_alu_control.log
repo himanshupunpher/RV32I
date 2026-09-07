@@ -1,0 +1,19 @@
+=== tb_alu_control: starting ===
+PASS [1] ALUOp=00 (LW/SW addr) -> ADD, ignores funct3/funct7: ALUOp=00 funct3=111 funct7=1111111 -> alu_ctrl=000
+PASS [2] ALUOp=00 with funct3/funct7=0 -> ADD: ALUOp=00 funct3=000 funct7=0000000 -> alu_ctrl=000
+PASS [3] ALUOp=01 funct3=000 (BEQ) -> SUB: ALUOp=01 funct3=000 funct7=0000000 -> alu_ctrl=001
+PASS [4] ALUOp=01 funct3=001 (BNE) -> SUB, ignores funct7: ALUOp=01 funct3=001 funct7=1111111 -> alu_ctrl=001
+PASS [5] ALUOp=10 funct3=000 funct7[5]=0 -> ADD: ALUOp=10 funct3=000 funct7=0000000 -> alu_ctrl=000
+PASS [6] ALUOp=10 funct3=000 funct7[5]=1 -> SUB: ALUOp=10 funct3=000 funct7=0100000 -> alu_ctrl=001
+PASS [7] ALUOp=10 funct3=000 funct7[5]=0 (other bits set) -> ADD: ALUOp=10 funct3=000 funct7=0011011 -> alu_ctrl=000
+PASS [8] ALUOp=10 funct3=111 -> AND: ALUOp=10 funct3=111 funct7=0000000 -> alu_ctrl=010
+PASS [9] ALUOp=10 funct3=110 -> OR: ALUOp=10 funct3=110 funct7=0000000 -> alu_ctrl=011
+PASS [10] ALUOp=10 funct3=100 -> XOR: ALUOp=10 funct3=100 funct7=0000000 -> alu_ctrl=100
+PASS [11] ALUOp=10 funct3=010 -> SLT: ALUOp=10 funct3=010 funct7=0000000 -> alu_ctrl=101
+PASS [12] ALUOp=10 funct3=011 (SLTU, unimplemented) -> default ADD: ALUOp=10 funct3=011 funct7=0000000 -> alu_ctrl=000
+PASS [13] ALUOp=10 funct3=001 (SLL, unimplemented) -> default ADD: ALUOp=10 funct3=001 funct7=0000000 -> alu_ctrl=000
+PASS [14] ALUOp=10 funct3=101 (SRL/SRA, unimplemented) -> default ADD: ALUOp=10 funct3=101 funct7=0000000 -> alu_ctrl=000
+PASS [15] ALUOp=11 (unused encoding) -> default ADD: ALUOp=11 funct3=111 funct7=1111111 -> alu_ctrl=000
+=== tb_alu_control: 15 checks, 0 errors ===
+*** TB_ALU_CONTROL: ALL TESTS PASSED ***
+tb/tb_alu_control.v:116: $finish called at 15000 (1ps)

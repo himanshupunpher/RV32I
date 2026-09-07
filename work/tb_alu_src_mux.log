@@ -1,0 +1,8 @@
+=== tb_alu_src_mux: starting ===
+PASS [1] ALUSrc=0 selects rdata2 (R-type): rdata2=aaaaaaaa imm=55555555 ALUSrc=0 -> alu_b=aaaaaaaa
+PASS [2] ALUSrc=1 selects imm (I-type/LW/SW): rdata2=aaaaaaaa imm=55555555 ALUSrc=1 -> alu_b=55555555
+PASS [3] ALUSrc=1 passes through negative imm unchanged: rdata2=00000000 imm=ffffffff ALUSrc=1 -> alu_b=ffffffff
+PASS [4] ALUSrc=0 passes through rdata2 unchanged: rdata2=ffffffff imm=00000000 ALUSrc=0 -> alu_b=ffffffff
+=== tb_alu_src_mux: 4 checks, 0 errors ===
+*** TB_ALU_SRC_MUX: ALL TESTS PASSED ***
+tb/tb_alu_src_mux.v:55: $finish called at 4000 (1ps)

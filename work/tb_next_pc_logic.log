@@ -1,0 +1,14 @@
+=== tb_next_pc_logic: starting ===
+PASS [1] no Jump/Branch -> PC+4: next_pc=00001004
+PASS [2] BEQ not taken (zero=0) -> PC+4: next_pc=00002004
+PASS [3] BEQ taken (zero=1) -> PC+imm: next_pc=00002040
+PASS [4] BNE taken (zero=0) -> PC+imm (negative offset, backward branch): next_pc=00002ff8
+PASS [5] BNE not taken (zero=1, operands equal) -> PC+4: next_pc=00003004
+PASS [6] JAL: target = PC + imm (alu_result ignored): next_pc=00004200
+PASS [7] JALR: target = alu_result (PC/imm not used directly): next_pc=00006000
+PASS [8] Jump takes priority over Branch when both asserted: next_pc=99990000
+PASS [9] JALR target can be address 0: next_pc=00000000
+PASS [10] BEQ taken with imm=0 -> next_pc = PC (self-loop): next_pc=0000a000
+=== tb_next_pc_logic: 10 checks, 0 errors ===
+*** TB_NEXT_PC_LOGIC: ALL TESTS PASSED ***
+tb/tb_next_pc_logic.v:103: $finish called at 10000 (1ps)

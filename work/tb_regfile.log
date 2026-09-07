@@ -1,0 +1,18 @@
+=== tb_regfile: starting ===
+FAIL [1] x15 reads 0 after init: got=xxxxxxxx expected=00000000
+FAIL [2] x31 reads 0 after init: got=xxxxxxxx expected=00000000
+PASS [3] x5 read-back after write: cafebabe
+PASS [4] x5 unaffected by later write to x10: cafebabe
+PASS [5] x10 read-back after write: 12345678
+PASS [6] x0 stays 0 even after attempted write: 00000000
+FAIL [7] no write occurs when we=0: got=xxxxxxxx expected=00000000
+PASS [8] rs1==rs2==x7: rdata1 correct: 0000beef
+PASS [9] rs1==rs2==x7: rdata2 correct: 0000beef
+PASS [10] read of x12 combinationally shows OLD value while write is pending (pre-edge): 11111111
+PASS [11] x12 shows NEW value after the clock edge completes the write: 22222222
+PASS [12] x1 retains value after subsequent unrelated writes: 00000001
+PASS [13] x2 retains value after subsequent unrelated writes: 00000002
+PASS [14] x31 (highest register) writes/reads correctly: 0000001f
+=== tb_regfile: 14 checks, 3 errors ===
+*** TB_REGFILE: 3 TEST(S) FAILED ***
+tb/tb_regfile.v:118: $finish called at 98000 (1ps)

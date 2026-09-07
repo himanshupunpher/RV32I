@@ -1,0 +1,20 @@
+=== tb_alu: starting ===
+PASS [1] ADD 10+20: a=0000000a b=00000014 ctrl=000 -> result=0000001e zero=0
+PASS [2] ADD wraparound -1+1=0: a=ffffffff b=00000001 ctrl=000 -> result=00000000 zero=1
+PASS [3] ADD -5+-7: a=fffffffb b=fffffff9 ctrl=000 -> result=fffffff4 zero=0
+PASS [4] SUB 50-20: a=00000032 b=00000014 ctrl=001 -> result=0000001e zero=0
+PASS [5] SUB equal operands -> zero flag: a=0000004d b=0000004d ctrl=001 -> result=00000000 zero=1
+PASS [6] SUB 5-10 negative result: a=00000005 b=0000000a ctrl=001 -> result=fffffffb zero=0
+PASS [7] AND: a=ff00ff00 b=0f0f0f0f ctrl=010 -> result=0f000f00 zero=0
+PASS [8] AND disjoint bits -> zero: a=ff00ff00 b=00ff00ff ctrl=010 -> result=00000000 zero=1
+PASS [9] OR: a=ff00ff00 b=00ff00ff ctrl=011 -> result=ffffffff zero=0
+PASS [10] XOR alternating bits: a=aaaaaaaa b=55555555 ctrl=100 -> result=ffffffff zero=0
+PASS [11] XOR identical -> zero: a=deadbeef b=deadbeef ctrl=100 -> result=00000000 zero=1
+PASS [12] SLT -1 < 1 (signed) -> 1: a=ffffffff b=00000001 ctrl=101 -> result=00000001 zero=0
+PASS [13] SLT signed -1 < 0 -> 1 (must not be treated as unsigned): a=ffffffff b=00000000 ctrl=101 -> result=00000001 zero=0
+PASS [14] SLT 100 < 50 -> 0 (zero flag: result==0): a=00000064 b=00000032 ctrl=101 -> result=00000000 zero=1
+PASS [15] SLT equal operands -> 0: a=0000002a b=0000002a ctrl=101 -> result=00000000 zero=1
+PASS [16] Unused alu_ctrl code -> default result 0: a=deadbeef b=cafebabe ctrl=110 -> result=00000000 zero=1
+=== tb_alu: 16 checks, 0 errors ===
+*** TB_ALU: ALL TESTS PASSED ***
+tb/tb_alu.v:122: $finish called at 16000 (1ps)

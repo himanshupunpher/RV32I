@@ -1,0 +1,72 @@
+=== tb_decoder: starting ===
+-- R-type: ADD x3, x1, x2 --
+PASS [1] R-type opcode: 00000033
+PASS [2] R-type rs1: 00000001
+PASS [3] R-type rs2: 00000002
+PASS [4] R-type rd: 00000003
+PASS [5] R-type funct3: 00000000
+PASS [6] R-type funct7: 00000000
+PASS [7] R-type imm (unused, must be 0): 00000000
+-- R-type: SUB x5, x6, x7 --
+PASS [8] SUB rs1: 00000006
+PASS [9] SUB rs2: 00000007
+PASS [10] SUB rd: 00000005
+PASS [11] SUB funct7 (distinguishes from ADD): 00000020
+-- I-type: ADDI x4, x1, -5 --
+PASS [12] ADDI opcode: 00000013
+PASS [13] ADDI rs1: 00000001
+PASS [14] ADDI rs2 (must be 0, unused for I-type): 00000000
+PASS [15] ADDI rd: 00000004
+PASS [16] ADDI funct3: 00000000
+PASS [17] ADDI funct7 (must be 0, no funct7 in I-type): 00000000
+PASS [18] ADDI imm sign-extended -5: fffffffb
+-- I-type: LW x2, 100(x8) --
+PASS [19] LW opcode: 00000003
+PASS [20] LW rs1 (base): 00000008
+PASS [21] LW rd: 00000002
+PASS [22] LW imm positive, no sign-extension needed: 00000064
+-- I-type: JALR x1, 0(x5) --
+PASS [23] JALR opcode: 00000067
+PASS [24] JALR rs1: 00000005
+PASS [25] JALR rd: 00000001
+PASS [26] JALR imm 0: 00000000
+-- S-type: SW x9, -4(x10) --
+PASS [27] SW opcode: 00000023
+PASS [28] SW rs1 (base): 0000000a
+PASS [29] SW rs2 (source): 00000009
+PASS [30] SW rd (must be 0, no dest for S-type): 00000000
+PASS [31] SW funct7 forced to 0: 00000000
+PASS [32] SW imm sign-extended -4: fffffffc
+-- B-type: BEQ x1, x2, +16 --
+PASS [33] BEQ opcode: 00000063
+PASS [34] BEQ rs1: 00000001
+PASS [35] BEQ rs2: 00000002
+PASS [36] BEQ rd (must be 0, no dest for B-type): 00000000
+PASS [37] BEQ funct3: 00000000
+PASS [38] BEQ imm = +16 bytes: 00000010
+-- B-type: BNE x3, x4, -8 --
+PASS [39] BNE opcode: 00000063
+PASS [40] BNE rs1: 00000003
+PASS [41] BNE rs2: 00000004
+PASS [42] BNE funct3: 00000001
+PASS [43] BNE imm = -8 bytes, sign-extended: fffffff8
+-- J-type: JAL x1, +2048 --
+PASS [44] JAL opcode: 0000006f
+PASS [45] JAL rs1 (must be 0, unused): 00000000
+PASS [46] JAL rs2 (must be 0, unused): 00000000
+PASS [47] JAL rd: 00000001
+PASS [48] JAL funct3 forced to 0: 00000000
+PASS [49] JAL imm = +2048 bytes: 00000800
+-- J-type: JAL x0, -4 --
+PASS [50] JAL x0 rd: 00000000
+PASS [51] JAL imm = -4 bytes, sign-extended: fffffffc
+-- default: unsupported opcode --
+PASS [52] default rs1 = 0: 00000000
+PASS [53] default rs2 = 0: 00000000
+PASS [54] default rd = 0: 00000000
+PASS [55] default funct3 = 0: 00000000
+PASS [56] default funct7 = 0: 00000000
+PASS [57] default imm = 0: 00000000
+=== tb_decoder: 57 checks, 0 errors ===
+*** TB_DECODER: ALL TESTS PASSED ***
+tb/tb_decoder.v:164: $finish called at 11000 (1ps)

@@ -1,0 +1,8 @@
+=== tb_writeback_mux: starting ===
+PASS [1] MemtoReg=00 selects alu_result (R-type/I-type ALU): MemtoReg=00 -> wb_data=11111111
+PASS [2] MemtoReg=01 selects dmem_data (LW): MemtoReg=01 -> wb_data=22222222
+PASS [3] MemtoReg=10 selects pc_plus_4 (JAL/JALR): MemtoReg=10 -> wb_data=33333333
+PASS [4] MemtoReg=11 (unused) falls through to pc_plus_4: MemtoReg=11 -> wb_data=33333333
+=== tb_writeback_mux: 4 checks, 0 errors ===
+*** TB_WRITEBACK_MUX: ALL TESTS PASSED ***
+tb/tb_writeback_mux.v:63: $finish called at 4000 (1ps)

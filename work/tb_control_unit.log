@@ -1,0 +1,13 @@
+=== tb_control_unit: starting ===
+PASS [1] R-type (ADD/SUB/AND/OR/XOR/SLT): opcode=0110011 -> RegWrite=1 ALUSrc=0 MemRead=0 MemWrite=0 Branch=0 Jump=0 JumpType=0 MemtoReg=00 ALUOp=10
+PASS [2] ADDI: opcode=0010011 -> RegWrite=1 ALUSrc=1 MemRead=0 MemWrite=0 Branch=0 Jump=0 JumpType=0 MemtoReg=00 ALUOp=10
+PASS [3] LW: opcode=0000011 -> RegWrite=1 ALUSrc=1 MemRead=1 MemWrite=0 Branch=0 Jump=0 JumpType=0 MemtoReg=01 ALUOp=00
+PASS [4] SW: opcode=0100011 -> RegWrite=0 ALUSrc=1 MemRead=0 MemWrite=1 Branch=0 Jump=0 JumpType=0 MemtoReg=00 ALUOp=00
+PASS [5] BEQ/BNE (B-type): opcode=1100011 -> RegWrite=0 ALUSrc=0 MemRead=0 MemWrite=0 Branch=1 Jump=0 JumpType=0 MemtoReg=00 ALUOp=01
+PASS [6] JAL: opcode=1101111 -> RegWrite=1 ALUSrc=0 MemRead=0 MemWrite=0 Branch=0 Jump=1 JumpType=0 MemtoReg=10 ALUOp=00
+PASS [7] JALR: opcode=1100111 -> RegWrite=1 ALUSrc=1 MemRead=0 MemWrite=0 Branch=0 Jump=1 JumpType=1 MemtoReg=10 ALUOp=00
+PASS [8] unsupported opcode -> all signals de-asserted: opcode=1111111 -> RegWrite=0 ALUSrc=0 MemRead=0 MemWrite=0 Branch=0 Jump=0 JumpType=0 MemtoReg=00 ALUOp=00
+PASS [9] opcode=0000000 -> default (RegWrite must stay 0, no spurious writes): opcode=0000000 -> RegWrite=0 ALUSrc=0 MemRead=0 MemWrite=0 Branch=0 Jump=0 JumpType=0 MemtoReg=00 ALUOp=00
+=== tb_control_unit: 9 checks, 0 errors ===
+*** TB_CONTROL_UNIT: ALL TESTS PASSED ***
+tb/tb_control_unit.v:101: $finish called at 9000 (1ps)

@@ -1,0 +1,12 @@
+=== tb_pc_reg: starting ===
+PASS [1] async reset forces PC=0 immediately (no clk edge needed): PC=00000000 at time 1000
+PASS [2] PC stays 0 while reset held, even across posedge clk: PC=00000000 at time 6000
+PASS [3] PC stays 0 immediately after reset deasserted (no clk edge yet): PC=00000000 at time 7000
+PASS [4] PC loads next_pc on first posedge clk after reset release: PC=00001000 at time 16000
+PASS [5] PC loads next_pc on subsequent posedge clk: PC=00001004 at time 26000
+PASS [6] PC continues tracking next_pc each cycle: PC=00001008 at time 36000
+PASS [7] mid-cycle async reset forces PC=0 without waiting for posedge clk: PC=00000000 at time 41000
+PASS [8] PC resumes loading next_pc after reset released again: PC=00002000 at time 46000
+=== tb_pc_reg: 8 checks, 0 errors ===
+*** TB_PC_REG: ALL TESTS PASSED ***
+tb/tb_pc_reg.v:87: $finish called at 46000 (1ps)
